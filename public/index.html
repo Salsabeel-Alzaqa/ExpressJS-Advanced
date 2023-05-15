@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todos</title>
+</head>
+<body>
+  <h1>Todos :-</h1>
+  <ul id="todos"></ul>
+<img src="/image.jpg" alt="Image">
+  <script>
+    fetch('/todos')
+      .then(res => res.json())
+      .then(todos => {
+        const todosList = document.getElementById('todos');
+        todos.forEach(todo => {
+          const li = document.createElement('li');
+          li.textContent = `${todo.title} : ${todo.description}`;
+          todosList.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
